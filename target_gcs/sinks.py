@@ -9,11 +9,11 @@ import json
 import time
 
 from google.cloud.storage import Client
-from singer_sdk.sinks import BatchSink
+from singer_sdk.sinks import RecordSink
 from smart_open import open
 
 
-class GCSSink(BatchSink):
+class GCSSink(RecordSink):
     """GCS target sink class."""
 
     max_size = 1000  # Max records to write in one batch
@@ -48,20 +48,6 @@ class GCSSink(BatchSink):
         """In the future maybe we will support more formats"""
         return "jsonl"
 
-
-    def start_batch(self, context: dict) -> None:
-        """Start a batch.
-        Developers may optionally add additional markers to the `context` dict,
-        which is unique to this batch.
-        """
-        # Sample:
-        # ------
-        # batch_key = context["batch_id"]
-        # context["file_path"] = f"{batch_key}.csv"
-        # print(111111, context)
-        # print('11111111, starting batch, key: ', self.key_name)
-        pass
-
     def process_record(self, record: dict, context: dict) -> None:
         """Process the record.
 
@@ -69,19 +55,3 @@ class GCSSink(BatchSink):
         passed `context` dict from the current batch.
         """
         self.gcs_write_handle.write(f"{json.dumps(record, default=str)}\n".encode('utf-8'))
-
-        # Sample:
-        # ------
-        # with open(context["file_path"], "a") as csvfile:
-        #     csvfile.write(record)
-        # self.queue.put(record)
-        # print(1111111, f'processing record, queue size is {self.queue.qsize()}')
-        # pass
-
-    def process_batch(self, context: dict) -> None:
-        """Write out any prepped records and return once fully written."""
-        # Sample:
-        # ------
-        # client.upload(context["file_path"])  # Upload file
-        # Path(context["file_path"]).unlink()  # Delete local copy
-        pass
