@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "target-gcs"
-version = "1.0.1"
+version = "1.0.2"
 description = "`target-gcs` is a Singer target for GCS, built with the Meltano SDK for Singer Targets."
 authors = ["Datateer Ops"]
 keywords = [
