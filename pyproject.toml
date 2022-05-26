@@ -48,3 +48,14 @@ target-gcs = 'target_gcs.target:TargetGCS.cli'
 py36 = true
 include = '\.pyi?$'
 exclude = '.meltano/'
+
+
+[tool.semantic_release]
+version_variable = [
+    # "dr_sven/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+branch = "main"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
