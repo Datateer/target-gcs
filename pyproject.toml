@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "target-gcs"
-version = "0.0.1"
+version = "1.0.0"
 description = "`target-gcs` is a Singer target for GCS, built with the Meltano SDK for Singer Targets."
 authors = ["Datateer Ops"]
 keywords = [
@@ -17,6 +17,7 @@ google-cloud-storage = "^2.3.0"
 google-api-python-client = "^2.49.0"
 smart-open = {extras = ["gcs"], version = "^6.0.0"}
 pytest-watch = "^4.2.0"
+python-semantic-release = "^7.28.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
