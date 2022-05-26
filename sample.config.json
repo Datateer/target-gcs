@@ -1,0 +1,7 @@
+{
+  "credentials_file": "./.secrets/credentials_file.json",
+  "bucket_name": "datateer-managed-prt-prod-raw-data",
+  "key_prefix": "prt-test/triton",
+  "date_format": "YYYY-MM-DD",
+  "key_naming_convention": "{stream}/export_date={date}/{timestamp}.jsonl"
+}

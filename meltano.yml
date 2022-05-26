@@ -1,0 +1,28 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: e1acb3ba-b6d0-4b7c-aa29-30ea9fc18d29
+plugins:
+  extractors:
+    - name: tap-carbon-intensity
+      variant: meltano
+      pip_url: git+https://gitlab.com/meltano/tap-carbon-intensity.git
+  loaders:
+    - name: target-gcs
+      namespace: target_gcs
+      pip_url: -e .
+      capabilities:
+        - state
+        - catalog
+        - discover
+      settings:
+        - name: bucket_name
+        - name: credentials_file
+        - name: date_format
+        - name: key_prefix
+        - name: kay_naming_convention
+      config:
+        bucket_name: datateer-managed-prt-prod-raw-data
+        credentials_file: .secrets/credentials_file.json
+        date_format: "%Y-%m-%d"
+        key_prefix: prt-test/triton
+        key_naming_convention: "{stream}/export_date={date}/{timestamp}.jsonl"
