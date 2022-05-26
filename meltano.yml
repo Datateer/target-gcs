@@ -19,7 +19,7 @@ plugins:
         - name: credentials_file
         - name: date_format
         - name: key_prefix
-        - name: kay_naming_convention
+        - name: key_naming_convention
       config:
         bucket_name: datateer-managed-prt-prod-raw-data
         credentials_file: .secrets/credentials_file.json
