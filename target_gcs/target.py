@@ -1,11 +1,9 @@
 """GCS target class."""
 
-from singer_sdk.target_base import Target
 from singer_sdk import typing as th
+from singer_sdk.target_base import Target
 
-from target_gcs.sinks import (
-    GCSSink,
-)
+from target_gcs.sinks import GCSSink
 
 
 class TargetGCS(Target):

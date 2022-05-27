@@ -1,5 +1,5 @@
-from datetime import datetime
 import re
+from datetime import datetime
 
 from target_gcs.sinks import GCSSink
 from target_gcs.target import TargetGCS
