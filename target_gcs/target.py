@@ -11,7 +11,7 @@ class TargetGCS(Target):
 
     name = "target-gcs"
     config_jsonschema = th.PropertiesList(
-        th.Property("credentials_file", th.StringType, required=True),
+        th.Property("credentials_file", th.StringType, required=False,default=''),
         th.Property("bucket_name", th.StringType, required=True),
         th.Property("key_prefix", th.StringType, required=False),
         th.Property("key_naming_convention", th.StringType, required=False),

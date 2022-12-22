@@ -60,11 +60,19 @@ class GCSSink(RecordSink):
         """Opens a stream for writing to the target cloud object"""
         if not self._gcs_write_handle:
             credentials_path = self.config.get("credentials_file")
+             
+            if credentials_path != '':
+                client = Client.from_service_account_json(credentials_path)
+            elif credentials_path == 'inherit':
+                client = Client()
+            else:
+                raise Exception("No valid type of credentials set")
+
             self._gcs_write_handle = smart_open.open(
                 f'gs://{self.config.get("bucket_name")}/{self.key_name}',
                 "wb",
                 transport_params=dict(
-                    client=Client.from_service_account_json(credentials_path)
+                    client=client
                 ),
             )
         return self._gcs_write_handle
