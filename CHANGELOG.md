@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.0 (2023-03-01)
+### Feature
+* Make gcp service account credential file optional ([`6e9e36e`](https://github.com/Datateer/target-gcs/commit/6e9e36ec3a9fee4d2e16b994ecade8ddd8eb61c1))
+
 ## v1.0.3 (2022-05-27)
 ### Fix
 * Bump version ([`494d3c9`](https://github.com/Datateer/target-gcs/commit/494d3c90c1c58191a9023d95ebeb61995441fa49))
