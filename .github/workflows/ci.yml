@@ -13,14 +13,14 @@ jobs:
   Quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.8
       - name: Install Python Poetry
         uses: abatilo/actions-poetry@v2.1.0
         with:
-          poetry-version: 1.1.7
+          poetry-version: 1.8.0
       - name: Configure poetry
         shell: bash
         run: python -m poetry config virtualenvs.in-project true
@@ -44,7 +44,7 @@ jobs:
     concurrency: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Python Semantic Release
