@@ -48,9 +48,16 @@ jobs:
         with:
           fetch-depth: 0
       - name: Python Semantic Release
+        id: semantic-release
         uses: relekang/python-semantic-release@master
         with:
           # a special token in github at the organization account level
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # first must use the Datateer account token, then after first publish can generate a repo-specific token
           pypi_token: ${{ secrets.PYPI_TOKEN }}
+      - name: Publish to PyPI
+        if: hashFiles('dist/*') != ''
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_TOKEN }}
+          packages-dir: dist/
