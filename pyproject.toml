@@ -53,7 +53,6 @@ exclude = '.meltano/'
 
 [tool.semantic_release]
 version_variable = [
-    # "dr_sven/__init__.py:__version__",
     "pyproject.toml:version"
 ]
 branch = "main"
