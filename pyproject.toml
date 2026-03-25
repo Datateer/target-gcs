@@ -18,6 +18,7 @@ google-api-python-client = "^2.49.0"
 smart-open = {extras = ["gcs"], version = "^6.0.0"}
 pytest-watch = "^4.2.0"
 orjson = "^3.6.8"
+setuptools = "<82"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.5"
