@@ -9,6 +9,8 @@ from datetime import datetime
 from io import FileIO
 from typing import Optional
 
+import decimal
+
 import orjson
 import smart_open
 from google.cloud.storage import Client
@@ -82,5 +84,16 @@ class GCSSink(RecordSink):
         passed `context` dict from the current batch.
         """
         self.gcs_write_handle.write(
-            orjson.dumps(record, option=orjson.OPT_APPEND_NEWLINE)
+            orjson.dumps(
+                record,
+                option=orjson.OPT_APPEND_NEWLINE,
+                default=_default_serializer,
+            )
         )
+
+
+def _default_serializer(obj):
+    """Handle types that orjson cannot serialize natively."""
+    if isinstance(obj, decimal.Decimal):
+        return float(obj)
+    raise TypeError(f"Type is not JSON serializable: {type(obj)}")
